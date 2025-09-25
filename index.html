@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Adira Fatih Romadhan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0d1b2a;
+      color: #e0e1dd;
+      line-height: 1.6;
+      scroll-behavior: smooth; /* tambahan untuk smooth scroll default */
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #1b263b;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #e0e1dd;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #778da9;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, #1b263b, #0d1b2a);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #778da9;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #415a77;
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .about {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #1b263b;
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      background: #415a77;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1b263b;
+      color: #778da9;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#hero" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero">
+    <h1>Adira Fatih Romadhan</h1>
+    <p>Mahasiswa Informatika</p>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>Tentang Saya</h2>
+    <div class="about">
+      <p>
+        Halo! Saya Adira, seorang mahasiswa Fakultas Ilmu Komputer Universitas Jember. 
+        Saya tertarik pada dunia pemrograman.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Project</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Project 1</h3>
+        <p>Sebuah aplikasi Jastiket.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>Simulasi jaringan kecil dengan Cisco Packet Tracer, melibatkan router, switch, dan PC.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>Program pencarian kos dengan algoritma DFS dan Branch & Bound menggunakan Python.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Adira Fatih Romadhan</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Highlight menu aktif sesuai scroll
+    const sections = document.querySelectorAll("section, header");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(sec => {
+        const sectionTop = sec.offsetTop - 80;
+        const sectionHeight = sec.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = sec.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
